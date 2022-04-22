@@ -28,4 +28,15 @@ public class SceneManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+
+    public void ActivatePause()
+    {
+        Time.timeScale = 0;
+
+    }
+
+    public void DeActivatePause()
+    {
+        Time.timeScale = 1;
+    }
 }
