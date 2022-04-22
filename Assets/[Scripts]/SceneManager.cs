@@ -1,3 +1,10 @@
+///-----------------------------
+///     Author          : Hardik Shah
+///     Last Modified   : 2022/04/22
+///     Description     : Script 
+///     Revision History: Added SceneManager 
+/// ----------------------------
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

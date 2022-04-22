@@ -1,3 +1,10 @@
+///-----------------------------
+///     Author          : Hardik Shah
+///     Last Modified   : 2022/04/22
+///     Description     : Script 
+///     Revision History: Added Movement component
+/// ----------------------------
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -128,14 +135,24 @@ public class MovementComponent : MonoBehaviour
         Playeranimator.SetBool(IsJumpingHash, false);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject)
+        if(other.gameObject.name == "Coin")
         {
-            Debug.Log("Player collided with Coin");
-            Debug.Log(gameObject.name);
-           // Destroy(other.gameObject);
+            print("Increase Timer");
+            playerController.CountdownTimer += 10;
+            Destroy(other.gameObject);
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Coin"))
+    //    {
+    //        Debug.Log(other.gameObject);
+
+    //        Destroy(other.gameObject);
+    //    }
+    //}
 
 }
