@@ -9,21 +9,21 @@ public class MovementComponent : MonoBehaviour
 {
     //Movement Variables
     [SerializeField]
-    float WalkSpeed = 15.0f;
+    float WalkSpeed = 5.0f;
     [SerializeField]
-    float RunSpeed = 20.0f;
+    float RunSpeed = 10.0f;
     [SerializeField]
-    float JumpForce = 15.0f;
+    float JumpForce = 5.0f;
 
     [Header("Player Pickups")]
-    public int Astronaut_Coin = 0;
+    //public int Astronaut_Coin = 0;
     //public TMP_Text Astronaut_CoinText;
 
     //Components
     PlayerController playerController;
     Rigidbody RigidBody;
     Animator Playeranimator;
-    //public GameObject astronaut_Coin;
+    public GameObject Coin;
 
     //Movement Refrences
     Vector2 InputVector = Vector2.zero;
@@ -100,7 +100,7 @@ public class MovementComponent : MonoBehaviour
         InputVector = value.Get<Vector2>();
         Playeranimator.SetFloat(MovementXHash, InputVector.x);
         Playeranimator.SetFloat(MovementYHash, InputVector.y);
-        print("InputVector:" + InputVector);
+        //print("InputVector:" + InputVector);
     }
 
     public void OnRun(InputValue value)
@@ -128,17 +128,14 @@ public class MovementComponent : MonoBehaviour
         Playeranimator.SetBool(IsJumpingHash, false);
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Astronaut_Coin"))
-    //    {
-    //        Debug.Log("Player collided with Astronaut_Coin");
-    //        Astronaut_Coin++;
-    //        Astronaut_CoinText.text = "Coins: " + Astronaut_Coin;
-    //        AudioSource.PlayClipAtPoint(Astronaut_Coin_Clip, transform.position);
-    //        Destroy(other.gameObject);
-    //    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject)
+        {
+            Debug.Log("Player collided with Coin");
+            Debug.Log(gameObject.name);
+           // Destroy(other.gameObject);
+        }
+    }
 
-
-    //}
 }
